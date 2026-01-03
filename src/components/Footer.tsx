@@ -1,5 +1,6 @@
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -27,25 +28,25 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex gap-4 justify-center">
               <a 
-                href="#" 
+                href="https://www.instagram.com/lumior360/" 
                 className="p-3 border border-border hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-full" 
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.facebook.com/profile.php?id=61584309916230" 
                 className="p-3 border border-border hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-full" 
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.tiktok.com/@lumior.360" 
                 className="p-3 border border-border hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-full" 
-                aria-label="WhatsApp"
+                aria-label="Tiktok"
               >
-                <MessageCircle size={20} />
+                <FaTiktok size={20} />
               </a>
             </div>
           </div>

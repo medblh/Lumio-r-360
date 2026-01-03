@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, ShoppingBag, User } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useForm } from "@/context/FormContext";
+import { FaTiktok } from "react-icons/fa";
+import { Instagram, Facebook } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +31,7 @@ const Navigation = () => {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[calc(100%-2rem)] ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[calc(100%-2rem)] max-w-6xl ${
         isScrolled
           ? "shadow-2xl scale-105"
           : "shadow-lg"
@@ -42,8 +44,20 @@ const Navigation = () => {
           transition-all duration-300
         `}
       >
-        <nav className="mx-auto px-6 py-3 md:py-4 flex items-center justify-between">
-          {/* Left Nav - Desktop */}
+        <nav className="mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between">
+          {/* Mobile: Logo à gauche */}
+          <a
+            href="/"
+            className="md:hidden flex items-center"
+          >
+            <img 
+              src={logo} 
+              alt="Lumio'r 360" 
+              className="h-8 w-auto object-contain max-w-[140px]" 
+            />
+          </a>
+
+          {/* Desktop: Navigation gauche - maintenant alignée à gauche */}
           <div className="hidden md:flex items-center gap-8 flex-1">
             {navLinks.map((link) => (
               <a
@@ -56,9 +70,21 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Desktop: Logo au centre - sans flex-1 pour qu'il ne prenne pas d'espace flexible */}
+          <a
+            href="/"
+            className="hidden md:flex items-center justify-center mx-8"
+          >
+            <img 
+              src={logo} 
+              alt="Lumio'r 360" 
+              className="h-12 w-auto object-contain" 
+            />
+          </a>
+
+          {/* Mobile: Bouton menu à droite */}
           <button
-            className="md:hidden p-2 -ml-2"
+            className="md:hidden p-1"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -69,26 +95,12 @@ const Navigation = () => {
             )}
           </button>
 
-          {/* Logo - Center */}
-          <a
-            href="/"
-            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:flex-1 md:text-center"
-          >
-            <div className="flex items-center justify-center">
-              <img 
-                src={logo} 
-                alt="Lumio'r 360" 
-                className="h-10 md:h-12 w-auto object-contain" 
-              />
-            </div>
-          </a>
-
-          {/* Right Nav */}
-          <div className="flex items-center gap-4 md:gap-6 flex-1 justify-end">
+          {/* Desktop: Navigation droite */}
+          <div className="hidden md:flex items-center gap-6 flex-1 justify-end">
             {/* Premium "skin issues?" button */}
             <button 
               onClick={handleSkinIssuesClick}
-              className="group relative font-body text-xs md:text-sm tracking-[0.2em] uppercase text-[#EDE6DE] hover:text-[#EDE6DE]/90 transition-all duration-300"
+              className="group relative font-body text-sm tracking-[0.2em] uppercase text-[#EDE6DE] hover:text-[#EDE6DE]/90 transition-all duration-300 whitespace-nowrap"
               aria-label="Skin Issues Consultation"
             >
               <span className="relative z-10">skin issues?</span>
@@ -96,7 +108,7 @@ const Navigation = () => {
             </button>
 
             {/* Account Icon 
-            <button aria-label="Account" className="hidden md:block">
+            <button aria-label="Account">
               <User
                 size={20}
                 className="text-[#EDE6DE]/80 hover:text-[#EDE6DE] transition-colors"
@@ -104,7 +116,7 @@ const Navigation = () => {
             </button>*/}
 
             {/* Cart Icon 
-            <button className="relative hidden md:block" aria-label="Cart">
+            <button className="relative" aria-label="Cart">
               <ShoppingBag
                 size={20}
                 className="text-[#EDE6DE]/80 hover:text-[#EDE6DE] transition-colors"
@@ -119,7 +131,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden rounded-b-2xl bg-[#1F253C] border-t border-[#2D3655]/30 animate-fade-in">
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-3">
+            <div className="container mx-auto px-4 sm:px-6 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -130,6 +142,7 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
+              
               {/* Mobile Skin Issues Button */}
               <button 
                 onClick={handleSkinIssuesClick}
@@ -137,25 +150,33 @@ const Navigation = () => {
               >
                 skin issues?
               </button>
-              {/* Mobile-only account and cart */}
-              <div className="flex gap-4 mt-4 pt-4 border-t border-[#2D3655]/30">
-                <button 
-                  className="flex-1 flex items-center justify-center gap-2 py-2 text-[#EDE6DE] hover:bg-white/5 rounded-lg transition-all"
+              
+              {/* Social Media Icons - Mobile */}
+              <div className="flex justify-center gap-4 mt-4 pt-4 border-t border-[#2D3655]/30 text-[hsl(34.29,38.89%,92.94%)]">
+                <a 
+                  href="#" 
+                  className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
+                  aria-label="Instagram"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <User size={18} />
-                  <span className="font-body text-sm">Account</span>
-                </button>
-                <button 
-                  className="flex-1 flex items-center justify-center gap-2 py-2 text-[#EDE6DE] hover:bg-white/5 rounded-lg transition-all relative"
+                  <Instagram size={20} />
+                </a>
+                <a 
+                  href="#" 
+                  className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
+                  aria-label="Facebook"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <ShoppingBag size={18} />
-                  <span className="font-body text-sm">Cart</span>
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-primary-foreground text-[10px] font-body font-medium rounded-full flex items-center justify-center">
-                    0
-                  </span>
-                </button>
+                  <Facebook size={20} />
+                </a>
+                <a 
+                  href="#" 
+                  className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
+                  aria-label="TikTok"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FaTiktok size={20} />
+                </a>
               </div>
             </div>
           </div>

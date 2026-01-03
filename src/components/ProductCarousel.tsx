@@ -1,93 +1,137 @@
-import ProductCard from "./ProductCard";
-import productCream from "@/assets/wab_01.png";
-import productSerum from "@/assets/wab_02.png";
-import productCleanser from "@/assets/wab_03.png";
-import productLip from "@/assets/wab_04.png";
+import React from "react";
 
-const products = [
+const tips = [
   {
-    image: productCream,
-    category: "moisturize",
-    name: "Face Moisturizer",
-    price: "$68.00",
-    description: "Rich daily moisturizer with 24K gold peptides",
-    rating: 4.8,
-    reviews: 2847,
-    badge: "Bestseller",
+    icon: "💧",
+    title: "Hydration Science",
+    description: "Damp skin absorbs products 3x better than dry skin. Apply within 60 seconds of cleansing.",
+    category: "Science",
   },
   {
-    image: productSerum,
-    category: "serum",
-    name: " Anti-aging Serum",
-    price: "$85.00",
-    description: "Vitamin C brightening serum",
-    rating: 4.9,
-    reviews: 3214,
-    badge: "New",
+    icon: "☀️",
+    title: "UV Defense",
+    description: "90% of premature aging is caused by UV exposure. Daily SPF is your best anti-aging.",
+    category: "Protection",
   },
   {
-    image: productCleanser,
-    category: "serum",
-    name: "Lip Serum/gel",
-    price: "$42.00",
-    description: "Gentle gel-to-milk daily cleanser",
-    rating: 4.7,
-    reviews: 1956,
+    icon: "🔬",
+    title: "Active Timing",
+    description: "Use vitamin C in AM, retinoids in PM. Never mix certain actives together for best results.",
+    category: "Chemistry",
   },
   {
-    image: productLip,
-    category: "gel",
-    name: "Eye Gel",
-    price: "$28.00",
-    description: "Hydrating peptide lip therapy",
-    rating: 4.8,
-    reviews: 4521,
+    icon: "🧖‍♀️",
+    title: "Double Cleanse",
+    description: "Oil-based first cleanse removes sunscreen/makeup. Water-based second cleanse cleans skin.",
+    category: "Technique",
   },
 ];
 
-const ProductCarousel = () => {
+const TipCard = ({ tip }) => {
   return (
-    <section id="shop" className="py-20 md:py-32 bg-background">
+    <div className="group rounded-xl p-6 bg-[#1F253C] border border-[#272727] hover:bg-[#1F253C]/90 hover:border-[#D2C0AA]/50 transition-all duration-300 hover:-translate-y-1">
+      <div className="mb-5">
+        <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-[#EDE6DE] bg-[#272727] rounded-full mb-3">
+          {tip.category}
+        </span>
+        <div className="text-4xl mb-4 text-[#D2C0AA]">{tip.icon}</div>
+        <h3 className="font-display text-xl font-semibold mb-3 text-[#EDE6DE]">
+          {tip.title}
+        </h3>
+      </div>
+      <p className="font-body text-[#D2C0AA] leading-relaxed text-sm">
+        {tip.description}
+      </p>
+      {/*<div className="mt-6 pt-6 border-t border-[#272727]">
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-[#D2C0AA]/70">Learn more</span>
+          <span className="text-[#EDE6DE] text-sm opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
+        </div>
+      </div>*/}
+    </div>
+  );
+};
+
+const SkinTipsSection = () => {
+  return (
+    <section id="skin-tips" className="py-20 md:py-28 bg-[#EDE6DE]">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground block mb-4">
-            The Collection
+        <div className="text-center mb-12">
+          <span className="font-body text-sm tracking-[0.3em] uppercase text-[#1F253C] block mb-3">
+            Skin Intelligence
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-4">
-            Essential rituals
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-4 text-[#272727]">
+            Evidence-Based Rituals
           </h2>
-          <p className="font-body text-muted-foreground max-w-lg mx-auto">
-            Each product crafted to work in harmony, delivering transformative results from day one.
+          <p className="font-body text-[#1F253C] max-w-xl mx-auto">
+            Transform your skincare routine with scientifically-backed principles and practices.
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
-          {products.map((product, index) => (
+        {/* Tips Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tips.map((tip, index) => (
             <div
-              key={product.name}
+              key={tip.title}
               className="fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <ProductCard {...product} />
+              <TipCard tip={tip} />
             </div>
           ))}
         </div>
 
-        {/* View All Link 
-        <div className="text-center mt-16">
-          <a
-            href="#shop"
-            className="inline-flex items-center gap-2 font-body text-sm tracking-wider uppercase underline-anim"
-          >
-            View All Products
-            <span className="text-lg">→</span>
-          </a>
+        {/* Key Principles */}
+        <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#D2C0AA]/30 to-[#1F253C]/5 border border-[#D2C0AA]/30">
+          <div className="text-center mb-10">
+            <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 text-[#272727]">
+              The Skincare Trinity
+            </h3>
+            <p className="text-[#1F253C] max-w-2xl mx-auto">
+              These three principles form the foundation of effective, healthy skincare.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-[#1F253C] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl text-[#EDE6DE]">🧴</span>
+              </div>
+              <h4 className="font-medium text-[#272727] mb-2">Precision</h4>
+              <p className="text-sm text-[#1F253C]">Right ingredients in the right order for your skin type</p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-[#1F253C] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl text-[#EDE6DE]">⏱️</span>
+              </div>
+              <h4 className="font-medium text-[#272727] mb-2">Consistency</h4>
+              <p className="text-sm text-[#1F253C]">Regular care yields better results than aggressive treatments</p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-[#1F253C] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl text-[#EDE6DE]">🎯</span>
+              </div>
+              <h4 className="font-medium text-[#272727] mb-2">Patience</h4>
+              <p className="text-sm text-[#1F253C]">Real transformation takes 4-8 weeks of consistent use</p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA 
+        <div className="mt-16 text-center">
+          <button className="px-8 py-3 bg-[#1F253C] hover:bg-[#272727] text-[#EDE6DE] rounded-full text-sm font-medium tracking-wide transition-colors duration-300">
+            Get Personalized Routine
+          </button>
+          <p className="text-[#1F253C] text-sm mt-4">
+            Take our 2-minute skin assessment for custom recommendations
+          </p>
         </div>*/}
       </div>
     </section>
   );
 };
 
-export default ProductCarousel;
+export default SkinTipsSection;
