@@ -154,7 +154,7 @@ const Navigation = () => {
               {/* Social Media Icons - Mobile */}
               <div className="flex justify-center gap-4 mt-4 pt-4 border-t border-[#2D3655]/30 text-[hsl(34.29,38.89%,92.94%)]">
                 <a 
-                  href="#" 
+                  href="https://www.instagram.com/lumior360/" 
                   className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
                   aria-label="Instagram"
                   onClick={() => setIsMenuOpen(false)}
@@ -162,7 +162,7 @@ const Navigation = () => {
                   <Instagram size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/profile.php?id=61584309916230" 
                   className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
                   aria-label="Facebook"
                   onClick={() => setIsMenuOpen(false)}
@@ -170,7 +170,7 @@ const Navigation = () => {
                   <Facebook size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.tiktok.com/@lumior.360" 
                   className="p-3 border border-[#2D3655] hover:border-[#EDE6DE] hover:bg-[#EDE6DE] hover:text-[#1F253C] transition-all duration-300 rounded-full" 
                   aria-label="TikTok"
                   onClick={() => setIsMenuOpen(false)}
